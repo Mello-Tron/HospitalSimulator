@@ -1,11 +1,80 @@
 #ifndef _SIMULATOR_
 #define _SIMULATOR_
 
-class Simulator {
+#include "PatientQueue.h"
+#include "CityMap.h"
+#include "Caregiver.h"
+#include "Doctor.h"
+#include "Nurse.h"
+#include <vector>
+#include <iostream>
 
+class Simulator {
 private:
+	int clock;
+	int totalTime;
+	PatientQueue * patientQueue;
+	CityMap * cityMap;
+	std::vector<Caregiver *> caregivers;
+
+	int read_int(const std::string &prompt, int low, int high)
+	{
+		if (low >= high)
+			throw std::invalid_argument("invalid range specified");
+
+		std::cin.exceptions(std::ios_base::failbit);
+		int num = 0;
+		while (true) {
+			try {
+				while (true) {
+					std::cout << prompt;
+					std::cin >> num;
+					if (num >= low && num <= high) {
+						std::cout << std::endl;
+						return num;
+					}
+				}
+			}
+			catch (std::ios_base::failure) {
+				std::cout << "Bad numeric string -- try again\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<int>::max(), '\n');
+			}
+		}
+	}
 
 public:
+	Simulator() {
+		clock = 0;
+		totalTime = 60;
+		patientQueue = new PatientQueue();
+		cityMap = new CityMap();
+	}
 
+	void EnterData() {
+		std::cout << "Welcome to the CS273ville Hospital Simulator.\n\n";
+
+		int rate = read_int("Please enter the hourly patient arrival rate (planes/hour): ", 1, 60);
+		double arrival_rate = rate / 60.0;
+
+		int numberOfDoctors = read_int("Please enter the number of doctors working at the hospital: ", 0, INT_MAX);
+		int numberOfNurses = read_int("Please enter the number of nurses working at the hospital: ", 0, INT_MAX);
+
+		totalTime = read_int("Please enter the simulation time (hours): ", 1, INT_MAX);
+		totalTime *= 60;
+
+		for (int i = 0; i < numberOfDoctors; i++) {
+			caregivers.push_back(new Doctor());
+		}
+	}
+
+	void RunSimulation() {
+
+	}
+
+	void DisplayRecords() {
+
+	}
 };
+
 #endif _SIMULATOR_

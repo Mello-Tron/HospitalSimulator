@@ -1,7 +1,9 @@
 #ifndef _DOCTOR_
 #define _DOCTOR_
 
-class Doctor {
+#include "Caregiver.h"
+
+class Doctor : public Caregiver {
 private:
 
 
