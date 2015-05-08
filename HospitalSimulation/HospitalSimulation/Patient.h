@@ -2,11 +2,11 @@
 #define _PATIENT_
 
 
-class Patient() {
+class Patient {
 private:
 
 public:
 
-}
+};
 
-#endif
+#endif _PATIENT_

@@ -1,10 +1,11 @@
 #ifndef _SIMULATOR_
 #define _SIMULATOR_
 
-class Simulator() {
+class Simulator {
 
 private:
 
 public:
-}
-#endif
+
+};
+#endif _SIMULATOR_
