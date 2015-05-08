@@ -1,10 +1,12 @@
 #ifndef _CAREGIVER_
 #define _CAREGIVER_
 
-class Caregiver() {
+#include "Patient.h"
+
+class Caregiver {
 private:
 	bool available;
-	Patient currentPatient;
+	Patient * currentPatient;
 public:
 	bool IsAvailable() {
 

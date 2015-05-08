@@ -1,11 +1,15 @@
 #ifndef _CITYMAP_
 #define _CITYMAP_
-#include <string>
 
-class CityMap() {
+#include <map>
+#include <vector>
+#include <string>
+#include "Patient.h"
+
+class CityMap {
 private:
-	Map<string, Patient> pMap;
-	vector<string> names;
+	std::map<std::string, Patient> pMap;
+	std::vector<std::string> names;
 public:
 	void Update(int clock) {
 
