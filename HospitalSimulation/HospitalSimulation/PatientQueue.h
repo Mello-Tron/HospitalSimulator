@@ -1,12 +1,12 @@
 #ifndef _PATIENTQUEUE_
 #define _PATIENTQUEUE_
 
-class PatientQueue() {
+class PatientQueue {
 
 private:
 
 public:
 
 
-}
-#endif
+};
+#endif _PATIENTQUEUE_

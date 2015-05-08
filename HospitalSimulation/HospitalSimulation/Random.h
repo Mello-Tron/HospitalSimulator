@@ -1,11 +1,11 @@
 #ifndef _RANDOM_
 #define _RANDOM_
 
-class Random() {
+class Random {
 
 private:
 
 public:
 
-}
-#endif
+};
+#endif _RANDOM_

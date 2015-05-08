@@ -1,12 +1,12 @@
 #ifndef _DOCTOR_
 #define _DOCTOR_
 
-class Doctor() {
+class Doctor {
 private:
 
 
 public:
 
 
-}
-#endif 
+};
+#endif  _DOCTOR_
