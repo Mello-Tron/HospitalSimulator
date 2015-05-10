@@ -5,9 +5,13 @@
 
 class Caregiver {
 private:
+	CityMap * done;
 	bool available;
 	Patient * currentPatient;
 public:
+	void Discharge(Patient* patient) {
+		done->Disharge(patient);
+	}
 	bool IsAvailable() {
 
 	}
@@ -15,6 +19,7 @@ public:
 	void Work(int clock) {
 
 	}
+	Caregiver() {}
 };
 
 #endif _CAREGIVER_
