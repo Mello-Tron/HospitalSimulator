@@ -8,6 +8,8 @@
 #include "Nurse.h"
 #include <vector>
 #include <iostream>
+#include <string>
+using namespace std;
 
 class Simulator {
 private:
@@ -69,7 +71,7 @@ public:
 	}
 
 	void RunSimulation() {
-		for (int clock = 0; clock < 10000; clock++) {
+		for (int clock = 0; clock < 10080; clock++) {		// 10080 because 60 x 24 x 7
 			// needs to update patientqueue -- come back to this in a bit
 		}
 	}
@@ -87,6 +89,38 @@ public:
 		average = sum / tally;
 
 		cout << "Average wait time was: " << average << " minutes" << endl;
+
+
+		/////////////////////////////////////////////////////////////////
+		// this is the users menu -- but we can move it else where
+
+		bool exit = false;
+		while (!exit) {
+			cout << "Welcome, what would you like to do?" << endl;
+			cout << "1.) View Patient" << endl;
+			cout << "2.) ----------" << endl;
+			cout << "3.) Exit" << endl;
+
+			int input = read_int("Please enter your decsion now (1, 2, or 3): ");
+			string name;
+			switch (input) {
+			case 1:
+				cout << "Please enter patient's name: ";
+				cin >> name;
+				// search patient function here
+				break;
+			case 2:
+				/////////
+				break;
+			case 3:
+				cout << "Goodbye!" << endl;
+				exit = true;
+				break;
+			}
+
+
+		}
+
 
 	}
 };
