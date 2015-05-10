@@ -69,10 +69,24 @@ public:
 	}
 
 	void RunSimulation() {
-
+		for (int clock = 0; clock < 10000; clock++) {
+			// needs to update patientqueue -- come back to this in a bit
+		}
 	}
 
 	void DisplayRecords() {
+		double average = 0;
+		int sum = 0;
+		int tally = 0;
+
+		for (map<string, Patient>::iterator it = Patient->begin(); it != Patient->end(); it++) {
+			sum += total_time;
+			tally++;
+		}
+
+		average = sum / tally;
+
+		cout << "Average wait time was: " << average << " minutes" << endl;
 
 	}
 };
