@@ -16,7 +16,7 @@ public:
 
 	}
 
-	void Disharge(Patient * patient) {
+	void Discharge(Patient * patient) {
 		done.push(patient);
 	}
 };

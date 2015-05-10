@@ -101,7 +101,7 @@ public:
 			cout << "2.) ----------" << endl;
 			cout << "3.) Exit" << endl;
 
-			int input = read_int("Please enter your decsion now (1, 2, or 3): ");
+			int input = read_int("Please enter your decision now (1, 2, or 3): ");
 			string name;
 			switch (input) {
 			case 1:

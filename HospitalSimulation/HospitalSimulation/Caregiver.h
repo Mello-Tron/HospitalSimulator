@@ -10,15 +10,16 @@ private:
 	Patient * currentPatient;
 public:
 	void Discharge(Patient* patient) {
-		done->Disharge(patient);
+		done->Discharge(patient);
 	}
 	bool IsAvailable() {
-
+		return available;
 	}
 
 	void Work(int clock) {
 
 	}
+
 	Caregiver() {}
 };
 
