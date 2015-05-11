@@ -9,7 +9,7 @@ class PatientQueue {
 
 private:
 
-	priority_queue<Patient> patientPriorityQueue;
+	//priority_queue<Patient> patientPriorityQueue;
 	priority_queue<Patient*> lowPriority;
 	priority_queue<Patient*> highPriority;
 

@@ -12,6 +12,9 @@ private:
 	std::map<std::string, Patient> pMap;
 	std::vector<std::string> names;
 public:
+
+
+
 	void Update(int clock) {
 
 	}

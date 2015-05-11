@@ -68,6 +68,10 @@ public:
 		for (int i = 0; i < numberOfDoctors; i++) {
 			caregivers.push_back(new Doctor());
 		}
+
+		for (int i = 0; i < numberOfNurses; i++) {
+			caregivers.push_back(new Nurse());
+		}
 	}
 
 	void RunSimulation() {
