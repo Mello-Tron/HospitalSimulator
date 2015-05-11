@@ -8,6 +8,9 @@ private:
 	bool available;
 	Patient * currentPatient;
 public:
+
+	virtual bool getPatient() = 0;  // - virtual becasue depends on doctor and nurse
+
 	bool IsAvailable() {
 
 	}
