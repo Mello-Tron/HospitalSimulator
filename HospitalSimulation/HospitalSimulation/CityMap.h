@@ -12,7 +12,6 @@ using namespace std;
 
 class CityMap {
 private:
-	std::queue<Patient*> done;  // might not be necessary, but putting it in just for right now
 	std::map<std::string, Patient*> pMap;
 	std::vector<std::string> names;
 public:
@@ -26,7 +25,7 @@ public:
 		}
 		else {
 			while (citizens >> line) {
-				pMap.insert(make_pair(line, new Patient(clock)));
+				pMap.insert(make_pair(line, new Patient(clock, line)));
 				names.push_back(line);
 			}
 		}
@@ -37,8 +36,8 @@ public:
 
 	}
 
-	void Discharge(Patient * patient) {
-		done.push(patient);
+	void ReturnPatient(Patient * patient) {
+		pMap.insert(make_pair(patient->getName(), patient));
 	}
 };
 

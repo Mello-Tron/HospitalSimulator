@@ -8,7 +8,6 @@ class Doctor : public Caregiver {
 private:
 
 public:
-	Doctor() {}
 
 	bool getPatient(int clock, PatientQueue patientQueue) {
 		currentPatient = patientQueue.getPatientDoctor();

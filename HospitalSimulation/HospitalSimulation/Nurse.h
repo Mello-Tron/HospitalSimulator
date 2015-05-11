@@ -7,9 +7,7 @@
 class Nurse : public Caregiver {
 private:
 
-
 public:
-	Nurse() {}
 
 	bool getPatient(int clock, PatientQueue patientQueue) {
 		currentPatient = patientQueue.getPatientNurse();

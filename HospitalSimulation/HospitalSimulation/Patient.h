@@ -14,10 +14,16 @@ private:
 	int totalVisits;
 	string name;
 public:
-	Patient(int clock) {}
+	Patient(int clock, string myName) {
+		name = myName;
+	}
 
 	int getPriority() {
 		return priority;
+	}
+
+	string getName() {
+		return name;
 	}
 };
 

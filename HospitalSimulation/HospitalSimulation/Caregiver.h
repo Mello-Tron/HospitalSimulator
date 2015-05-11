@@ -16,7 +16,7 @@ public:
 	virtual bool getPatient() = 0;  // - virtual becasue depends on doctor and nurse
 
 	void Discharge(Patient* patient) {
-		city->Discharge(patient);
+		city->ReturnPatient(patient);
 		currentPatient = NULL;
 	}
 
@@ -34,7 +34,9 @@ public:
 		}
 	}
 
-	Caregiver() {}
+	Caregiver(CityMap * citymap) {
+		city = citymap;
+	}
 };
 
 #endif _CAREGIVER_
