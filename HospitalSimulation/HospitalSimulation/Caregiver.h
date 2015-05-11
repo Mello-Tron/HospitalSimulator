@@ -1,29 +1,37 @@
 #ifndef _CAREGIVER_
 #define _CAREGIVER_
 
+#include "Random.h"
 #include "Patient.h"
 
 class Caregiver {
-private:
-	CityMap * done;
+protected:
+	CityMap * city;
 	bool available;
 	Patient * currentPatient;
+	int timeWhenNextDone;
+	Random rand;
 public:
-<<<<<<< HEAD
 
 	virtual bool getPatient() = 0;  // - virtual becasue depends on doctor and nurse
 
-=======
 	void Discharge(Patient* patient) {
-		done->Discharge(patient);
+		city->Discharge(patient);
+		currentPatient = NULL;
 	}
->>>>>>> origin/master
+
 	bool IsAvailable() {
 		return available;
 	}
 
 	void Work(int clock) {
-
+		if (clock >= timeWhenNextDone && !available) {
+			Discharge(currentPatient);
+			available = true;
+		}
+		else if (available) {
+			getPatient();
+		}
 	}
 
 	Caregiver() {}
