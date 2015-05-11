@@ -66,11 +66,11 @@ public:
 		totalTime *= 60;
 
 		for (int i = 0; i < numberOfDoctors; i++) {
-			caregivers.push_back(new Doctor());
+			caregivers.push_back(new Doctor(cityMap));
 		}
 
 		for (int i = 0; i < numberOfNurses; i++) {
-			caregivers.push_back(new Nurse());
+			caregivers.push_back(new Nurse(cityMap));
 		}
 	}
 
@@ -85,7 +85,7 @@ public:
 		int sum = 0;
 		int tally = 0;
 
-		for (map<string, Patient>::iterator it = Patient->begin(); it != Patient->end(); it++) {
+		for (map<string, Patient>::iterator it = cityMap->getMap().begin(); it != cityMap.end(); it++) {
 			sum += total_time;
 			tally++;
 		}
