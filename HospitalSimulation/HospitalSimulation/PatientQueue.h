@@ -24,6 +24,7 @@ public:
 		}
 		else if (!lowPriority.empty()) {
 			Patient* processing = lowPriority.top();
+			processing = lowPriority.top();
 			lowPriority.pop();
 			return processing;
 		}
