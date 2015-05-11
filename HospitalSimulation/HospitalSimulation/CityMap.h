@@ -36,10 +36,6 @@ public:
 
 	}
 
-	map<std::string, Patient*> getMap() {
-		return pMap;
-	}
-
 	void ReturnPatient(Patient * patient) {
 		pMap.insert(make_pair(patient->getName(), patient));
 	}

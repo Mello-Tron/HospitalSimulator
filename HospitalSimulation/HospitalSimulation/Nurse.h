@@ -8,9 +8,6 @@ class Nurse : public Caregiver {
 private:
 
 public:
-	Nurse(CityMap * citymap) {
-		city = citymap;
-	}
 
 	bool getPatient(int clock, PatientQueue patientQueue) {
 		currentPatient = patientQueue.getPatientNurse();

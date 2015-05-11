@@ -13,7 +13,7 @@ protected:
 	Random rand;
 public:
 
-	virtual bool getPatient() {}  // - virtual becasue depends on doctor and nurse
+	virtual bool getPatient() = 0;  // - virtual becasue depends on doctor and nurse
 
 	void Discharge(Patient* patient) {
 		city->ReturnPatient(patient);
@@ -37,8 +37,6 @@ public:
 	Caregiver(CityMap * citymap) {
 		city = citymap;
 	}
-
-	Caregiver() {}
 };
 
 #endif _CAREGIVER_
