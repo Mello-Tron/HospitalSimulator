@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="Caregiver.h" />
     <ClInclude Include="CityMap.h" />
+    <ClInclude Include="Compare.h" />
     <ClInclude Include="Doctor.h" />
     <ClInclude Include="Nurse.h" />
     <ClInclude Include="Patient.h" />
