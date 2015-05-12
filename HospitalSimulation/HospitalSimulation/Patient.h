@@ -10,10 +10,11 @@ private:
 	int treatmentTime;
 	int departureTime;
 	int averageWaitTime;
-	int priority;
 	int totalVisits;
 	string name;
 public:
+	int priority;
+
 	Patient(int clock, string myName) {
 		name = myName;
 	}
