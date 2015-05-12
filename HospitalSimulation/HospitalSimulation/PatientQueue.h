@@ -16,16 +16,16 @@ private:
 public:
 
 	void insertPatient(Patient * newPatient) {
-		newPatient->priority = 0;  // initialize priority to 0
+		newPatient->setPriority(0);  // initialize priority to 0
 		double priorityNumber = ((double)rand() / RAND_MAX);  // randomly generate priority value based on percentage
 		if (priorityNumber <= 0.70) {
-			newPatient->priority = 1 + rand() % 10;
+			newPatient->setPriority(1 + rand() % 10);
 		}
 		else if (priorityNumber > 0.70 && priorityNumber <= 0.90) {
-			newPatient->priority = 11 + rand() % 5;
+			newPatient->setPriority(11 + rand() % 5);
 		}
 		else if (priorityNumber > 0.90) {
-			newPatient->priority = 16 + rand() % 5;
+			newPatient->setPriority(16 + rand() % 5);
 		}
 
 		if (newPatient->getPriority() > 10)

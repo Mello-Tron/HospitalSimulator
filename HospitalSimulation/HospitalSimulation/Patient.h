@@ -11,9 +11,9 @@ private:
 	int departureTime;
 	int averageWaitTime;
 	int totalVisits;
+	int priority;
 	string name;
 public:
-	int priority;
 
 	Patient(int clock, string myName) {
 		name = myName;
@@ -21,6 +21,10 @@ public:
 
 	int getPriority() {
 		return priority;
+	}
+
+	void setPriority(int newPriority) {
+		priority = newPriority;
 	}
 
 	int getTotalTime() {
