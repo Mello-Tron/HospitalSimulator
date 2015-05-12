@@ -22,6 +22,10 @@ public:
 		return priority;
 	}
 
+	int getTotalTime() {
+		return averageWaitTime;
+	}
+
 	string getName() {
 		return name;
 	}

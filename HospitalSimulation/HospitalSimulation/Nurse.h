@@ -8,12 +8,13 @@ class Nurse : public Caregiver {
 private:
 
 public:
-	Nurse(CityMap * citymap) {
+	Nurse(CityMap * citymap, PatientQueue * pQueue) {
 		city = citymap;
+		patientQueue = pQueue;
 	}
 
-	bool getPatient(int clock, PatientQueue patientQueue) {
-		currentPatient = patientQueue.getPatientNurse();
+	bool getPatient(int clock, PatientQueue * patientQueue) {
+		currentPatient = patientQueue->getPatientNurse();
 		if (currentPatient == NULL)
 			return false;
 

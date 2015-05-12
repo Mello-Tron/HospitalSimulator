@@ -8,12 +8,13 @@ class Doctor : public Caregiver {
 private:
 
 public:
-	Doctor(CityMap * citymap) {
+	Doctor(CityMap * citymap, PatientQueue * pQueue) {
 		city = citymap;
+		patientQueue = pQueue;
 	}
 
-	bool getPatient(int clock, PatientQueue patientQueue) {
-		currentPatient = patientQueue.getPatientDoctor();
+	bool getPatient(int clock, PatientQueue * patientQueue) {
+		currentPatient = patientQueue->getPatientDoctor();
 		if (currentPatient == NULL)
 			return false;
 

@@ -7,13 +7,16 @@
 class Caregiver {
 protected:
 	CityMap * city;
+	PatientQueue * patientQueue;
 	bool available;
 	Patient * currentPatient;
 	int timeWhenNextDone;
 	Random rand;
 public:
 
-	virtual bool getPatient() {}  // - virtual becasue depends on doctor and nurse
+	virtual bool getPatient(int clock, PatientQueue * patientQueue) {
+		return false;
+	}
 
 	void Discharge(Patient* patient) {
 		city->ReturnPatient(patient);
@@ -30,12 +33,13 @@ public:
 			available = true;
 		}
 		else if (available) {
-			getPatient();
+			getPatient(clock, patientQueue);
 		}
 	}
 
-	Caregiver(CityMap * citymap) {
+	Caregiver(CityMap * citymap, PatientQueue * pQueue) {
 		city = citymap;
+		patientQueue = pQueue;
 	}
 
 	Caregiver() {}

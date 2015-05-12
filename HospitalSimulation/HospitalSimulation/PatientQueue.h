@@ -14,6 +14,12 @@ private:
 	priority_queue<Patient*> highPriority;
 
 public:
+	void insertPatient(Patient * newPatient) {
+		if (newPatient->getPriority() > 10)
+			highPriority.push(newPatient);
+		else
+			lowPriority.push(newPatient);
+	}
 
 	Patient* getPatientDoctor() {
 		if (!highPriority.empty()) {
@@ -22,14 +28,14 @@ public:
 			highPriority.pop();
 			return processing;
 		}
-		else if (!lowPriority.empty()) {
+		if (!lowPriority.empty()) {
 			Patient* processing = lowPriority.top();
 			processing = lowPriority.top();
 			lowPriority.pop();
 			return processing;
 		}
-		else
-			return NULL;
+		
+		return NULL;
 	}
 
 	Patient* getPatientNurse() {
@@ -40,48 +46,6 @@ public:
 		}
 		else
 			return NULL;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	void Update(int clock) {
-
-		Doctor->Work();
-		Nurse->Work();
-
-		bool newPatient;
-
-		while (newPatient = true) {
-			if (/*Nurse is available && Patient.getPriority > 0 && Patient.getPriority <= 10*/) {
-				//Assign patient to Nurse
-				//Restart WHILE loop
-			}
-			else if (/*Doctor is available && Patient.getPriority >= 11 && patient.getPriority <= 20*/) {
-				//Assign patient to Doctor
-				//Restart WHILE loop
-			}
-			else if (/*Doctor is available && Patient.getPriority >= 1 && patient.getPriority <= 10 */) {
-				//Assign patient to Doctor
-				//Restart WHILE loop
-			}
-			else
-				newPatient = false;
-		}
-		
 	}
 
 };
