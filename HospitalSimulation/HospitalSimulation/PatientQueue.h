@@ -3,15 +3,15 @@
 #include <iostream>
 #include <queue>
 #include "Patient.h"
-
+#include "Compare.h"
 using namespace std;
 class PatientQueue {
 
 private:
 
 	//priority_queue<Patient> patientPriorityQueue;
-	priority_queue<Patient*> lowPriority;
-	priority_queue<Patient*> highPriority;
+	priority_queue<Patient*, Compare> lowPriority;
+	priority_queue<Patient*, Compare> highPriority;
 
 public:
 

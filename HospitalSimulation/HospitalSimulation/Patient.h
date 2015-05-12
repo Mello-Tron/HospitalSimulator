@@ -30,7 +30,9 @@ public:
 	int getTotalTime() {
 		return averageWaitTime;
 	}
-
+	int getarrivalTime() {
+		return arrivalTime;
+	}
 	string getName() {
 		return name;
 	}
