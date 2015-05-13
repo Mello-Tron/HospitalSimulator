@@ -83,7 +83,19 @@ public:
 			for (int i = 0; i < caregivers.size(); i++) {
 				caregivers[i]->Work(clock);
 			}
-			cout << clock << "..." << endl;
+
+			//Just for fun :)
+			cout << "\b\b\b\b\b\b\b" << clock;
+			if (clock == 1)
+				cout << "\b\b\b\b\b\b\b\b" << "Welcome to CS273ville Hospital!!" << endl;
+			if (clock == 1000)
+				cout << "\b\b\b\b\b\b\b\b" << "Healing the sick is our specialty." << endl;
+			if (clock == 3000)
+				cout << "\b\b\b\b\b\b\b\b" << "Our hospital ranked #2 in the nation!" << endl;
+			if (clock == 6500)
+				cout << "\b\b\b\b\b\b\b\b" << "All our patients get free cookies during their stay." << endl;
+			if (clock == 9000)
+				cout << "\b\b\b\b\b\b\b\b" << "We hope you have enjoyed your visit." << endl;
 		}
 	}
 

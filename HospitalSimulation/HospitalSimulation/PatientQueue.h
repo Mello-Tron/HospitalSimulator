@@ -10,8 +10,8 @@ class PatientQueue {
 private:
 
 	//priority_queue<Patient> patientPriorityQueue;
-	priority_queue<Patient*, Compare> lowPriority;
-	priority_queue<Patient*, Compare> highPriority;
+	priority_queue<Patient*, std::vector<Patient*>, Compare> lowPriority;
+	priority_queue<Patient*, std::vector<Patient*>, Compare> highPriority;
 
 public:
 
