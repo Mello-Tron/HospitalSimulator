@@ -7,18 +7,23 @@
 class Doctor : public Caregiver {
 private:
 
-
 public:
-	Doctor() {}
+	Doctor(CityMap * citymap, PatientQueue * pQueue) {
+		city = citymap;
+		patientQueue = pQueue;
+	}
 
-	virtual bool getPatient() {
-		// gert patient from patientqueue based on priority --
-		//citymap -> getPatientDoctor
-		
-		if (patient)
-			return true;
-		else
+	bool getPatient(int clock, PatientQueue * patientQueue) {
+		currentPatient = patientQueue->getPatientDoctor();
+		if (currentPatient == NULL)
 			return false;
+
+		timeWhenNextDone = clock + rand.next_int(20) + 1;
+		available = false;
+
+		currentPatient->setWaitTime(clock);
+
+		return true;
 	}
 
 };

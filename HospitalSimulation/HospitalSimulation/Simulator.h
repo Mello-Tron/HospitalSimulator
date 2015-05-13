@@ -50,14 +50,15 @@ public:
 		clock = 0;
 		totalTime = 60;
 		patientQueue = new PatientQueue();
-		cityMap = new CityMap();
+		cityMap = new CityMap(patientQueue);
 	}
 
 	void EnterData() {
 		std::cout << "Welcome to the CS273ville Hospital Simulator.\n\n";
 
-		int rate = read_int("Please enter the hourly patient arrival rate (planes/hour): ", 1, 60);
+		int rate = read_int("Please enter the hourly patient arrival rate (patients/hour): ", 1, 60);
 		double arrival_rate = rate / 60.0;
+		cityMap->setArrivalRate(arrival_rate);
 
 		int numberOfDoctors = read_int("Please enter the number of doctors working at the hospital: ", 0, INT_MAX);
 		int numberOfNurses = read_int("Please enter the number of nurses working at the hospital: ", 0, INT_MAX);
@@ -66,24 +67,64 @@ public:
 		totalTime *= 60;
 
 		for (int i = 0; i < numberOfDoctors; i++) {
-			caregivers.push_back(new Doctor());
+			caregivers.push_back(new Doctor(cityMap, patientQueue));
 		}
+
+		for (int i = 0; i < numberOfNurses; i++) {
+			caregivers.push_back(new Nurse(cityMap, patientQueue));
+		}
+
+		cityMap->readFile(clock);
 	}
 
 	void RunSimulation() {
-		for (int clock = 0; clock < 10080; clock++) {		// 10080 because 60 x 24 x 7
-			// needs to update patientqueue -- come back to this in a bit
+		for (int clock = 0; clock < totalTime; clock++) {		// 10080 because 60 x 24 x 7
+			cityMap->Update(clock);
+			for (int i = 0; i < caregivers.size(); i++) {
+				caregivers[i]->Work(clock);
+			}
+
+			//Just for fun :)
+			cout << "\b\b\b\b\b\b\b" << clock;
+			if (clock == 1)
+				cout << "\b\b\b\b\b\b\b\b" << "Welcome to CS273ville Hospital!!" << endl;
+			else if (clock == 1000)
+				cout << "\b\b\b\b\b\b\b\b" << "Healing the sick is our specialty." << endl;
+			else if (clock == 3000)
+				cout << "\b\b\b\b\b\b\b\b" << "Our hospital ranked #2 in the nation!" << endl;
+			else if (clock == 6500)
+				cout << "\b\b\b\b\b\b\b\b" << "All our patients get free cookies during their stay." << endl;
+			else if (clock == 9000)
+				cout << "\b\b\b\b\b\b\b\b" << "We hope you have enjoyed your visit." << endl;
 		}
 	}
+
+
+	void allRecords() {
+		for (map<string, Patient*>::iterator it = cityMap->getMap().begin(); it != cityMap->getMap().end(); it++) {
+			cout << it->first << endl;
+		}
+	}
+
+	void patientRecord(string name) {
+		// need to implement -- come back to me
+	
+	}
+
+
 
 	void DisplayRecords() {
 		double average = 0;
 		int sum = 0;
 		int tally = 0;
 
-		for (map<string, Patient>::iterator it = Patient->begin(); it != Patient->end(); it++) {
-			sum += total_time;
-			tally++;
+		map<string, Patient*> mapCopy = cityMap->getMap();
+
+		for (map<string, Patient*>::iterator it = mapCopy.begin(); it != mapCopy.end(); ++it) {
+			if (it->second->getTotalVisits() != 0) {
+				sum += it->second->getAverageWaitTime();
+				tally++;
+			}
 		}
 
 		average = sum / tally;
@@ -98,19 +139,19 @@ public:
 		while (!exit) {
 			cout << "Welcome, what would you like to do?" << endl;
 			cout << "1.) View Patient" << endl;
-			cout << "2.) ----------" << endl;
+			cout << "2.) Display all Patients treated" << endl;
 			cout << "3.) Exit" << endl;
 
-			int input = read_int("Please enter your decision now (1, 2, or 3): ");
+			int input = read_int("Please enter your decision now (1, 2, or 3): ", 1, 3);
 			string name;
 			switch (input) {
 			case 1:
 				cout << "Please enter patient's name: ";
 				cin >> name;
-				// search patient function here
+				patientRecord(name);
 				break;
 			case 2:
-				/////////
+				allRecords();
 				break;
 			case 3:
 				cout << "Goodbye!" << endl;
