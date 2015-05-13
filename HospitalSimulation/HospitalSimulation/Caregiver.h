@@ -18,8 +18,9 @@ public:
 		return false;
 	}
 
-	void Discharge(Patient* patient) {
-		city->ReturnPatient(patient);
+	void Discharge() {
+		if (currentPatient != NULL)
+			city->ReturnPatient(currentPatient);
 		currentPatient = NULL;
 	}
 
@@ -29,7 +30,7 @@ public:
 
 	void Work(int clock) {
 		if (clock >= timeWhenNextDone && !available) {
-			Discharge(currentPatient);
+			Discharge();
 			available = true;
 		}
 		else if (available) {

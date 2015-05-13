@@ -27,9 +27,9 @@ public:
 	void readFile(int clock) {
 
 		string line;
-		//fstream citizens("C:\\Users\\marnold17\\Documents\\GitHub\\HospitalSimulator\\HospitalSimulation\\residents_273ville.txt");
+		fstream citizens("C:\\Users\\marnold17\\Documents\\GitHub\\HospitalSimulator\\HospitalSimulation\\residents_273ville.txt");
 		//fstream citizens("C:\\Users\\Michael\\Documents\\GitHub\\HospitalSimulator\\HospitalSimulation\\residents_273ville.txt");
-		fstream citizens("C:\\Users\\Patrick\\Documents\\residents_273ville.txt");
+		//fstream citizens("C:\\Users\\Patrick\\Documents\\residents_273ville.txt");
 		if (!citizens) {
 			cout << "Can't open file!" << endl;
 		}

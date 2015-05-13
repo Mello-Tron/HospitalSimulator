@@ -38,6 +38,10 @@ public:
 		waitTimes.push_back(clock - arrivalTimes[arrivalTimes.size() - 1]);
 	}
 
+	int getWaitTime(int number) {
+		return waitTimes[number];
+	}
+
 	int getAverageWaitTime() {
 		int sum = 0;
 		int i = 0;
@@ -52,6 +56,10 @@ public:
 
 	int getTotalVisits() {
 		return waitTimes.size();
+	}
+
+	int getPriority(int number) {
+		return priority[number];
 	}
 
 	string getName() {

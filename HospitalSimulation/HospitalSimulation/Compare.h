@@ -12,14 +12,14 @@ using namespace std;
 class Compare {
 public:
 	bool operator()(Patient* patient1, Patient* patient2) {
-		if (patient1->getMostRecentPriority() < patient2->getMostRecentPriority()) {
+		if (patient1->getMostRecentPriority() > patient2->getMostRecentPriority()) {
 			return true;
 		}
-		if (patient1->getMostRecentPriority() > patient2->getMostRecentPriority()) {
+		else if (patient1->getMostRecentPriority() < patient2->getMostRecentPriority()) {
 			return false;
 		}
-		if (patient1->getMostRecentPriority() == patient2->getMostRecentPriority()) {
-			if (patient1->getMostRecentArrivalTime() < patient2->getMostRecentArrivalTime()) {
+		else if (patient1->getMostRecentPriority() == patient2->getMostRecentPriority()) {
+			if (patient1->getMostRecentArrivalTime() > patient2->getMostRecentArrivalTime()) {
 				return true;
 			}
 			else

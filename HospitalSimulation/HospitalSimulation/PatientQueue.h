@@ -15,6 +15,30 @@ private:
 
 public:
 
+	void popLowPriority() {
+		lowPriority.pop();
+	}
+
+	void popHighPriority() {
+		highPriority.pop();
+	}
+
+	int getLowSize() {
+		return lowPriority.size();
+	}
+
+	int getHighSize() {
+		return highPriority.size();
+	}
+
+	priority_queue<Patient*, std::vector<Patient*>, Compare> getLowPriority() {
+		return lowPriority;
+	}
+
+	priority_queue<Patient*, std::vector<Patient*>, Compare> getHighPriority() {
+		return highPriority;
+	}
+
 	void insertPatient(Patient * newPatient, int clock) {
 		double priorityNumber = ((double)rand() / RAND_MAX);  // randomly generate priority value based on percentage
 		newPatient->setArrivalTime(clock);

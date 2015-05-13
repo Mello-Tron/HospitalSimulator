@@ -101,19 +101,33 @@ public:
 
 
 	void allRecords() {
-		for (map<string, Patient*>::iterator it = cityMap->getMap().begin(); it != cityMap->getMap().end(); it++) {
-			cout << it->first << endl;
+		map<string, Patient*> mapCopyRecords = cityMap->getMap();
+
+		for (map<string, Patient*>::iterator it = mapCopyRecords.begin(); it != mapCopyRecords.end(); it++) {
+			cout << it->first << " ";
 		}
 	}
 
 	void patientRecord(string name) {
 		// need to implement -- come back to me
-	
+		if (cityMap->getMap().count(name) > 0) {
+			Patient * currentPatient = cityMap->getMap().find(name)->second;
+			for (int i = 0; i < currentPatient->getTotalVisits(); i++) {
+				cout << "Visit " << i+1 << ". " << "Priority: " << currentPatient->getPriority(i)
+					<< " Wait Time: " << currentPatient->getWaitTime(i) << " minutes" << endl << endl;
+			}
+			if (currentPatient->getTotalVisits() == 0)
+				cout << name << " has no visits." << endl;
+		}
+		else
+			cout << "Could not find patient!" << endl;
 	}
 
 
 
 	void DisplayRecords() {
+		ReturnPatients();
+
 		double average = 0;
 		int sum = 0;
 		int tally = 0;
@@ -129,7 +143,7 @@ public:
 
 		average = sum / tally;
 
-		cout << "Average wait time was: " << average << " minutes" << endl;
+		cout << endl << "Average wait time was: " << average << " minutes" << endl;
 
 
 		/////////////////////////////////////////////////////////////////
@@ -140,20 +154,28 @@ public:
 			cout << "Welcome, what would you like to do?" << endl;
 			cout << "1.) View Patient" << endl;
 			cout << "2.) Display all Patients treated" << endl;
-			cout << "3.) Exit" << endl;
+			cout << "3.) Run simulation again" << endl;
+			cout << "4.) Exit" << endl;
 
-			int input = read_int("Please enter your decision now (1, 2, or 3): ", 1, 3);
+			int input = read_int("Please enter your decision now (1, 2, or 3): ", 1, 4);
 			string name;
 			switch (input) {
 			case 1:
 				cout << "Please enter patient's name: ";
 				cin >> name;
+				cout << endl;
 				patientRecord(name);
 				break;
 			case 2:
 				allRecords();
 				break;
 			case 3:
+				//Simulator newSim;
+				//newSim.EnterData();
+				//newSim.RunSimulation();
+				//newSim.DisplayRecords();
+				break;
+			case 4:
 				cout << "Goodbye!" << endl;
 				exit = true;
 				break;
@@ -163,6 +185,23 @@ public:
 		}
 
 
+	}
+
+	void ReturnPatients() {
+		while (!patientQueue->getLowPriority().empty()) {
+			Patient * p = NULL;
+			p = patientQueue->getLowPriority().top();
+			cityMap->ReturnPatient(p);
+			//patientQueue->getLowPriority().pop();
+			patientQueue->popLowPriority();
+		}
+		while (!patientQueue->getHighPriority().empty()) {
+			cityMap->ReturnPatient(patientQueue->getHighPriority().top());
+			patientQueue->popHighPriority();
+		}
+		for (int i = 0; i < caregivers.size(); i++) {
+			caregivers[i]->Discharge();
+		}
 	}
 };
 
