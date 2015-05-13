@@ -21,6 +21,8 @@ public:
 		timeWhenNextDone = clock + rand.next_int(20) + 1;
 		available = false;
 
+		currentPatient->setWaitTime(clock);
+
 		return true;
 	}
 

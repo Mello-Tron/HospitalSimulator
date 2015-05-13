@@ -15,9 +15,9 @@ private:
 
 public:
 
-	void insertPatient(Patient * newPatient) {
-		newPatient->setPriority(0);  // initialize priority to 0
+	void insertPatient(Patient * newPatient, int clock) {
 		double priorityNumber = ((double)rand() / RAND_MAX);  // randomly generate priority value based on percentage
+		newPatient->setArrivalTime(clock);
 		if (priorityNumber <= 0.70) {
 			newPatient->setPriority(1 + rand() % 10);
 		}
@@ -27,8 +27,11 @@ public:
 		else if (priorityNumber > 0.90) {
 			newPatient->setPriority(16 + rand() % 5);
 		}
+		else {
+			cout << priorityNumber << endl;
+		}
 
-		if (newPatient->getPriority() > 10)
+		if (newPatient->getMostRecentPriority() > 10)
 			highPriority.push(newPatient);
 		else
 			lowPriority.push(newPatient);

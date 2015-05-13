@@ -1,17 +1,16 @@
 #ifndef _PATIENT_
 #define _PATIENT_
 #include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 
 class Patient {
 private:
-	int arrivalTime;
-	int treatmentTime;
-	int departureTime;
-	int averageWaitTime;
-	int totalVisits;
-	int priority;
+	vector<int> arrivalTimes;
+	vector<int> departureTimes;
+	vector<int> waitTimes;
+	vector<int> priority;
 	string name;
 public:
 
@@ -19,20 +18,42 @@ public:
 		name = myName;
 	}
 
-	int getPriority() {
-		return priority;
+	int getMostRecentPriority() {
+		return priority[priority.size()-1];
+	}
+
+	int getMostRecentArrivalTime() {
+		return arrivalTimes[arrivalTimes.size() - 1];
 	}
 
 	void setPriority(int newPriority) {
-		priority = newPriority;
+		priority.push_back(newPriority);
 	}
 
-	int getTotalTime() {
-		return averageWaitTime;
+	void setArrivalTime(int newArrivalTime) {
+		arrivalTimes.push_back(newArrivalTime);
 	}
-	int getarrivalTime() {
-		return arrivalTime;
+
+	void setWaitTime(int clock) {
+		waitTimes.push_back(clock - arrivalTimes[arrivalTimes.size() - 1]);
 	}
+
+	int getAverageWaitTime() {
+		int sum = 0;
+		int i = 0;
+		for (i = 0; i < waitTimes.size(); i++) {
+			sum += waitTimes[i];
+		}
+
+		int average = sum / i;
+
+		return average;
+	}
+
+	int getTotalVisits() {
+		return waitTimes.size();
+	}
+
 	string getName() {
 		return name;
 	}

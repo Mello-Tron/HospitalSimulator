@@ -88,13 +88,13 @@ public:
 			cout << "\b\b\b\b\b\b\b" << clock;
 			if (clock == 1)
 				cout << "\b\b\b\b\b\b\b\b" << "Welcome to CS273ville Hospital!!" << endl;
-			if (clock == 1000)
+			else if (clock == 1000)
 				cout << "\b\b\b\b\b\b\b\b" << "Healing the sick is our specialty." << endl;
-			if (clock == 3000)
+			else if (clock == 3000)
 				cout << "\b\b\b\b\b\b\b\b" << "Our hospital ranked #2 in the nation!" << endl;
-			if (clock == 6500)
+			else if (clock == 6500)
 				cout << "\b\b\b\b\b\b\b\b" << "All our patients get free cookies during their stay." << endl;
-			if (clock == 9000)
+			else if (clock == 9000)
 				cout << "\b\b\b\b\b\b\b\b" << "We hope you have enjoyed your visit." << endl;
 		}
 	}
@@ -118,9 +118,13 @@ public:
 		int sum = 0;
 		int tally = 0;
 
-		for (map<string, Patient*>::iterator it = cityMap->getMap().begin(); it != cityMap->getMap().end(); it++) {
-			sum += it->second->getTotalTime();
-			tally++;
+		map<string, Patient*> mapCopy = cityMap->getMap();
+
+		for (map<string, Patient*>::iterator it = mapCopy.begin(); it != mapCopy.end(); ++it) {
+			if (it->second->getTotalVisits() != 0) {
+				sum += it->second->getAverageWaitTime();
+				tally++;
+			}
 		}
 
 		average = sum / tally;

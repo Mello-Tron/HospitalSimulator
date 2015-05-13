@@ -50,19 +50,19 @@ public:
 	}
 
 	void Update(int clock) {
-		if (rand.next_double() <= arrivalRate) {
-			TransferRandomPersonToQueue();
+		if (rand.next_double() <= arrivalRate && names.size() != 0) {
+			TransferRandomPersonToQueue(clock);
 		}
 	}
 
-	void TransferRandomPersonToQueue() {
+	void TransferRandomPersonToQueue(int clock) {
 		int randomInt = rand.next_int(names.size()-1);
 		string randomName = names[randomInt];
 		map<string, Patient*>::iterator it = pMap.find(randomName);
 		if (it == pMap.end()) {
 			cout << "Something went horribly wrong." << endl;
 		}
-		myPatientQueue->insertPatient(it->second);
+		myPatientQueue->insertPatient(it->second, clock);
 		pMap.erase(it);
 		names.erase(names.begin() + randomInt);
 	}
