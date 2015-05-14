@@ -154,10 +154,9 @@ public:
 			cout << "Welcome, what would you like to do?" << endl;
 			cout << "1.) View Patient" << endl;
 			cout << "2.) Display all Patients treated" << endl;
-			cout << "3.) Run simulation again" << endl;
-			cout << "4.) Exit" << endl;
+			cout << "3.) Exit" << endl;
 
-			int input = read_int("Please enter your decision now (1, 2, or 3): ", 1, 4);
+			int input = read_int("Please enter your decision now (1, 2, or 3): ", 1, 3);
 			string name;
 			switch (input) {
 			case 1:
@@ -170,12 +169,6 @@ public:
 				allRecords();
 				break;
 			case 3:
-				//Simulator newSim;
-				//newSim.EnterData();
-				//newSim.RunSimulation();
-				//newSim.DisplayRecords();
-				break;
-			case 4:
 				cout << "Goodbye!" << endl;
 				exit = true;
 				break;
